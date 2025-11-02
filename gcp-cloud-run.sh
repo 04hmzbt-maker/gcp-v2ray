@@ -94,31 +94,31 @@ select_memory() {
     
     # Show recommended memory based on CPU selection
     case $CPU in
-        1) echo "Recommended memory: 512Mi - 2Gi" ;;
-        2) echo "Recommended memory: 1Gi - 4Gi" ;;
-        4) echo "Recommended memory: 2Gi - 8Gi" ;;
-        8) echo "Recommended memory: 4Gi - 16Gi" ;;
+        1) echo "Recommended memory: 512MG - 2GB" ;;
+        2) echo "Recommended memory: 1GB - 4GB" ;;
+        4) echo "Recommended memory: 2GB - 8GB" ;;
+        8) echo "Recommended memory: 4GB - 16GB" ;;
     esac
     echo
     
     echo "Memory Options:"
-    echo "1. 512Mi"
-    echo "2. 1Gi"
-    echo "3. 2Gi"
-    echo "4. 4Gi"
-    echo "5. 8Gi"
-    echo "6. 16Gi"
+    echo "1. 512MG"
+    echo "2. 1GB"
+    echo "3. 2GB"
+    echo "4. 4GB"
+    echo "5. 8GB"
+    echo "6. 16GB"
     echo
     
     while true; do
         read -p "Select memory (1-6): " memory_choice
         case $memory_choice in
-            1) MEMORY="512Mi"; break ;;
-            2) MEMORY="1Gi"; break ;;
-            3) MEMORY="2Gi"; break ;;
-            4) MEMORY="4Gi"; break ;;
-            5) MEMORY="8Gi"; break ;;
-            6) MEMORY="16Gi"; break ;;
+            1) MEMORY="512MG"; break ;;
+            2) MEMORY="1GB"; break ;;
+            3) MEMORY="2GB"; break ;;
+            4) MEMORY="4GB"; break ;;
+            5) MEMORY="8GB"; break ;;
+            6) MEMORY="16GB"; break ;;
             *) echo "Invalid selection. Please enter a number between 1-6." ;;
         esac
     done
@@ -136,7 +136,7 @@ validate_memory_config() {
     local memory_unit=$(echo $MEMORY | sed 's/[0-9]*//g')
     
     # Convert everything to Mi for comparison
-    if [[ "$memory_unit" == "Gi" ]]; then
+    if [[ "$memory_unit" == "GB" ]]; then
         memory_num=$((memory_num * 1024))
     fi
     
@@ -164,14 +164,14 @@ validate_memory_config() {
     
     if [[ $memory_num -lt $min_memory ]]; then
         warn "Memory configuration ($MEMORY) might be too low for $CPU CPU core(s)."
-        warn "Recommended minimum: $((min_memory / 1024))Gi"
+        warn "Recommended minimum: $((min_memory / 1024))GB"
         read -p "Do you want to continue with this configuration? (y/n): " confirm
         if [[ ! $confirm =~ [Yy] ]]; then
             select_memory
         fi
     elif [[ $memory_num -gt $max_memory ]]; then
         warn "Memory configuration ($MEMORY) might be too high for $CPU CPU core(s)."
-        warn "Recommended maximum: $((max_memory / 1024))Gi"
+        warn "Recommended maximum: $((max_memory / 1024))GB"
         read -p "Do you want to continue with this configuration? (y/n): " confirm
         if [[ ! $confirm =~ [Yy] ]]; then
             select_memory
@@ -302,8 +302,8 @@ get_user_input() {
     fi
     
     # Host Domain (optional)
-    read -p "Enter host domain [default: m.googleapis.com]: " HOST_DOMAIN
-    HOST_DOMAIN=${HOST_DOMAIN:-"m.googleapis.com"}
+    read -p "Enter host domain [default: goldenhamza.vip-vps.cloudfunctions.net]: " HOST_DOMAIN
+    HOST_DOMAIN=${HOST_DOMAIN:-"goldenhamza.vip-vps.cloudfunctions.net"}
 }
 
 # Display configuration summary
@@ -534,13 +534,13 @@ main() {
     VLESS_LINK="vless://${UUID}@${HOST_DOMAIN}:443?path=%2Ft.me%2Fgoldenhamzanet&security=tls&alpn=h3%2Ch2%2Chttp%2F1.1&encryption=none&host=${DOMAIN}&fp=randomized&type=ws&sni=${DOMAIN}#${SERVICE_NAME}"
     
     # Create telegram message
-    MESSAGE="*GCP V2Ray Deployment → Successful ✅*
+    MESSAGE="*IAM0DH 🚀 V2Ray Deployment → Successful✅*
 ━━━━━━━━━━━━━━━━━━━━
-• *Project:* \`${PROJECT_ID}\`
-• *Service:* \`${SERVICE_NAME}\`
-• *Region:* \`${REGION}\`
-• *Resources:* \`${CPU} CPU | ${MEMORY} RAM\`
-• *Domain:* \`${DOMAIN}\`
+% *Creat by:* \`${t.me/goldenhamzanet}\`
+% *Service:* \`${SERVICE_NAME}\`
+% *Region:* \`${REGION}\`
+% *Resources:* \`${CPU} CPU | ${MEMORY} RAM\`
+% *Domain:* \`${DOMAIN}\`
 
 🔗 *V2Ray Configuration Link:*
 \`\`\`
@@ -549,13 +549,13 @@ ${VLESS_LINK}
 ━━━━━━━━━━━━━━━━━━━━"
 
     # Create console message
-    CONSOLE_MESSAGE="GCP V2Ray Deployment → Successful ✅
+    CONSOLE_MESSAGE="IAM0DH 🚀 V2Ray Deployment → Successful✅
 ━━━━━━━━━━━━━━━━━━━━
-• Project: ${PROJECT_ID}
-• Service: ${SERVICE_NAME}
-• Region: ${REGION}
-• Resources: ${CPU} CPU | ${MEMORY} RAM
-• Domain: ${DOMAIN}
+% Creat by: {t.me/goldenhamzanet}
+% Service: ${SERVICE_NAME}
+% Region: ${REGION}
+% Resources: ${CPU} CPU | ${MEMORY} RAM
+% Domain: ${DOMAIN}
 
 🔗 V2Ray Configuration Link:
 ${VLESS_LINK}
