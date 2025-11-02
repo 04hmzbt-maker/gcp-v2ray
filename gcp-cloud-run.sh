@@ -94,31 +94,31 @@ select_memory() {
     
     # Show recommended memory based on CPU selection
     case $CPU in
-        1) echo "Recommended memory: 512MG - 2GB" ;;
-        2) echo "Recommended memory: 1GB - 4GB" ;;
-        4) echo "Recommended memory: 2GB - 8GB" ;;
-        8) echo "Recommended memory: 4GB - 16GB" ;;
+        1) echo "Recommended memory: 512Mi - 2Gi" ;;
+        2) echo "Recommended memory: 1Gi - 4Gi" ;;
+        4) echo "Recommended memory: 2Gi - 8Gi" ;;
+        8) echo "Recommended memory: 4Gi - 16Gi" ;;
     esac
     echo
     
     echo "Memory Options:"
-    echo "1. 512MG"
-    echo "2. 1GB"
-    echo "3. 2GB"
-    echo "4. 4GB"
-    echo "5. 8GB"
-    echo "6. 16GB"
+    echo "1. 512Mi"
+    echo "2. 1Gi"
+    echo "3. 2Gi"
+    echo "4. 4Gi"
+    echo "5. 8Gi"
+    echo "6. 16Gi"
     echo
     
     while true; do
         read -p "Select memory (1-6): " memory_choice
         case $memory_choice in
-            1) MEMORY="512MG"; break ;;
-            2) MEMORY="1GB"; break ;;
-            3) MEMORY="2GB"; break ;;
-            4) MEMORY="4GB"; break ;;
-            5) MEMORY="8GB"; break ;;
-            6) MEMORY="16GB"; break ;;
+            1) MEMORY="512Mi"; break ;;
+            2) MEMORY="1Gi"; break ;;
+            3) MEMORY="2Gi"; break ;;
+            4) MEMORY="4Gi"; break ;;
+            5) MEMORY="8Gi"; break ;;
+            6) MEMORY="16Gi"; break ;;
             *) echo "Invalid selection. Please enter a number between 1-6." ;;
         esac
     done
@@ -136,7 +136,7 @@ validate_memory_config() {
     local memory_unit=$(echo $MEMORY | sed 's/[0-9]*//g')
     
     # Convert everything to Mi for comparison
-    if [[ "$memory_unit" == "GB" ]]; then
+    if [[ "$memory_unit" == "Gi" ]]; then
         memory_num=$((memory_num * 1024))
     fi
     
@@ -164,14 +164,14 @@ validate_memory_config() {
     
     if [[ $memory_num -lt $min_memory ]]; then
         warn "Memory configuration ($MEMORY) might be too low for $CPU CPU core(s)."
-        warn "Recommended minimum: $((min_memory / 1024))GB"
+        warn "Recommended minimum: $((min_memory / 1024))Gi"
         read -p "Do you want to continue with this configuration? (y/n): " confirm
         if [[ ! $confirm =~ [Yy] ]]; then
             select_memory
         fi
     elif [[ $memory_num -gt $max_memory ]]; then
         warn "Memory configuration ($MEMORY) might be too high for $CPU CPU core(s)."
-        warn "Recommended maximum: $((max_memory / 1024))GB"
+        warn "Recommended maximum: $((max_memory / 1024))Gi"
         read -p "Do you want to continue with this configuration? (y/n): " confirm
         if [[ ! $confirm =~ [Yy] ]]; then
             select_memory
