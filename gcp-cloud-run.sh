@@ -536,12 +536,9 @@ main() {
     # Create telegram message
     MESSAGE="*IAM0DH 🚀 V2Ray Deployment → Successful✅*
 ━━━━━━━━━━━━━━━━━━━━
-% *Creat by:* \`${t.me/goldenhamzanet}\`
-% *Service:* \`${SERVICE_NAME}\`
-% *Region:* \`${REGION}\`
-% *Resources:* \`${CPU} CPU | ${MEMORY} RAM\`
-% *Domain:* \`${DOMAIN}\`
-
+. *Service:* \`${SERVICE_NAME}\`
+. *Region:* \`${REGION}\`
+. *Resources:* \`${CPU} CPU | ${MEMORY} RAM\`
 🔗 *V2Ray Configuration Link:*
 \`\`\`
 ${VLESS_LINK}
@@ -551,11 +548,9 @@ ${VLESS_LINK}
     # Create console message
     CONSOLE_MESSAGE="IAM0DH 🚀 V2Ray Deployment → Successful✅
 ━━━━━━━━━━━━━━━━━━━━
-% Creat by: {t.me/goldenhamzanet}
-% Service: ${SERVICE_NAME}
-% Region: ${REGION}
-% Resources: ${CPU} CPU | ${MEMORY} RAM
-% Domain: ${DOMAIN}
+. Service: ${SERVICE_NAME}
+. Region: ${REGION}
+. Resources: ${CPU} CPU | ${MEMORY} RAM
 
 🔗 V2Ray Configuration Link:
 ${VLESS_LINK}
