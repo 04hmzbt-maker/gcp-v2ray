@@ -535,7 +535,7 @@ main() {
     
     # Create telegram message
     MESSAGE="*IAM0DH 🚀 V2Ray Deployment → Successful✅*
-━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 . *Service:* \`${SERVICE_NAME}\`
 . *Region:* \`${REGION}\`
 . *Resources:* \`${CPU} CPU | ${MEMORY} RAM\`
@@ -543,19 +543,17 @@ main() {
 \`\`\`
 ${VLESS_LINK}
 \`\`\`
-━━━━━━━━━━━━━━━━━━━━"
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     # Create console message
     CONSOLE_MESSAGE="IAM0DH 🚀 V2Ray Deployment → Successful✅
-━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 . Service: ${SERVICE_NAME}
 . Region: ${REGION}
 . Resources: ${CPU} CPU | ${MEMORY} RAM
 
 🔗 V2Ray Configuration Link:
 ${VLESS_LINK}
-
-━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Usage: Copy the above link and import to your V2Ray client."
     
     # Save to file
