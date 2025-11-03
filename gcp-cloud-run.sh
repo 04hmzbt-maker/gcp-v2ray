@@ -545,7 +545,7 @@ ${VLESS_LINK}
 \`\`\`
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     # Create console message
-    CONSOLE_MESSAGE="IAM0DH🚀V2Ray Deployment→Successful✅
+    CONSOLE_MESSAGE="IAM0DH🚀V2Ray→Successful✅
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ★ Service: ${SERVICE_NAME}
 ★ Region: ${REGION}
